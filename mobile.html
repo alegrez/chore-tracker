@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Chore Mobile</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mobile.css">
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <a href="index.html" class="version-link">Dashboard</a>
+    <h1>⚡ Tarea Rápida</h1>
+    <div class="main-container">
+        <div id="step-user" class="controls-card">
+            <h3>¿Quién eres?</h3>
+            <div id="user-grid" class="grid-buttons"></div>
+        </div>
+        <div id="step-task" class="controls-card" style="display:none;">
+            <h3 id="greeting"></h3>
+            <div id="task-list" class="task-scroll"></div>
+            <button id="btnCancel" class="stop" style="margin-top:15px;">Cancelar</button>
+        </div>
+    </div>
+    <div id="toast"></div>
+    <script src="js/api.js"></script>
+    <script src="js/mobile.js"></script>
+</body>
+</html>

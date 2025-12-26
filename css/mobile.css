@@ -1,0 +1,5 @@
+.grid-buttons { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.user-btn { padding:20px; font-size:1.1rem; background:var(--secondary); }
+.task-scroll { max-height:60vh; overflow-y:auto; display:flex; flex-direction:column; gap:8px; }
+.task-btn { background:white; color:var(--text); border:2px solid var(--primary); padding:12px; display:flex; justify-content:space-between; }
+.task-pts { font-weight:bold; color:var(--primary); }
