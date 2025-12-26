@@ -4,17 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Chore Mobile</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/mobile.css">
+    <link rel="stylesheet" href="css/style.css?v=1766776943">
+    <link rel="stylesheet" href="css/mobile.css?v=1766776943">
     <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
 </head>
 <body>
-    <a href="index.html" class="version-link">Dashboard</a>
+    <a href="index.html?force=true" class="version-link">Ver Dashboard 🖥️</a>
     <h1>⚡ Tarea Rápida</h1>
     <div class="main-container">
         <div id="step-user" class="controls-card">
             <h3>¿Quién eres?</h3>
             <div id="user-grid" class="grid-buttons"></div>
+
+            <div style="margin-top: 30px; border-top: 1px solid #eee; padding-top: 15px;">
+                <h4 style="margin: 0 0 10px; font-size: 0.9rem; color: #999;">Última actividad</h4>
+                <div id="recent-activity" style="font-size: 0.85rem; color: #666; display: flex; flex-direction: column; gap: 8px;">
+                    </div>
+            </div>
         </div>
         <div id="step-task" class="controls-card" style="display:none;">
             <h3 id="greeting"></h3>
@@ -23,7 +29,7 @@
         </div>
     </div>
     <div id="toast"></div>
-    <script src="js/api.js"></script>
-    <script src="js/mobile.js"></script>
+    <script src="js/api.js?v=1766776943"></script>
+    <script src="js/mobile.js?v=1766776943"></script>
 </body>
 </html>

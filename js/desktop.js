@@ -5,6 +5,7 @@ tabs.forEach(t => t.addEventListener('click', () => {
     document.getElementById(`tab-content-${t.dataset.target}`).classList.add('active');
     
     if(t.dataset.target === 'admin') load(); 
+    if(t.dataset.target === 'history') loadHistory();
 }));
 
 async function load() {
@@ -22,6 +23,50 @@ async function load() {
 
     renderAdminUsers(data.users);
     renderAdminTasks(data.tasks);
+}
+
+async function loadHistory() {
+    const container = document.getElementById('history-timeline');
+    container.innerHTML = '<p style="text-align:center; color:#999;">Cargando historial...</p>';
+    
+    const history = await ApiService.getHistory();
+    container.innerHTML = '';
+
+    if (history.length === 0) {
+        container.innerHTML = '<p style="text-align:center;">No hay actividad reciente.</p>';
+        return;
+    }
+
+    let currentDate = '';
+
+    history.forEach(item => {
+        const dateObj = new Date(item.created_at);
+        const dateStr = dateObj.toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' });
+        const timeStr = dateObj.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
+
+        if (dateStr !== currentDate) {
+            currentDate = dateStr;
+            const header = document.createElement('h4');
+            header.style.cssText = 'margin: 20px 0 10px; color: var(--secondary-color); text-transform: capitalize; border-bottom: 2px solid #eee; padding-bottom:5px;';
+            header.textContent = dateStr;
+            container.appendChild(header);
+        }
+
+        const row = document.createElement('div');
+        row.style.cssText = 'display: flex; justify-content: space-between; align-items: center; padding: 10px; background: #fff; margin-bottom: 8px; border-radius: 8px; border-left: 4px solid var(--primary-color); box-shadow: 0 2px 4px rgba(0,0,0,0.05);';
+        row.innerHTML = `
+            <div>
+                <span style="color: #888; font-size: 0.85rem; margin-right: 8px;">${timeStr}</span>
+                <strong>${item.user_name}</strong> hizo 
+                <span style="color: var(--primary-color);">${item.task_title}</span>
+                <span style="font-weight: bold; color: #666;">(+${item.points})</span>
+            </div>
+            <button onclick="undoAction('${item.id}')" style="background:transparent; border:1px solid #e76f51; color:#e76f51; padding: 4px 8px; font-size: 0.8rem;" title="Deshacer">↩</button>
+        `;
+        row.querySelector('button').onclick = () => undoAction(item);
+
+        container.appendChild(row);
+    });
 }
 
 function renderAdminUsers(users) {
@@ -96,6 +141,15 @@ window.deleteTask = async (id) => {
     if(confirm("¿Eliminar tarea?")) {
         await ApiService.deleteTask(id);
         showToast("Tarea eliminada"); load();
+    }
+};
+
+window.undoAction = async (historyItem) => {
+    if(confirm(`¿Deshacer "${historyItem.task_title}" de ${historyItem.user_name}? \nSe restarán ${historyItem.points} puntos.`)) {
+        await ApiService.undoTask(historyItem);
+        showToast("Acción deshecha");
+        loadHistory();
+        load();
     }
 };
 

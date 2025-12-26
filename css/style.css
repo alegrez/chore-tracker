@@ -1,10 +1,81 @@
-:root { --bg:#f4f4f9; --text:#333; --primary:#2a9d8f; --secondary:#264653; --accent:#e76f51; }
-body { font-family: system-ui, sans-serif; background:var(--bg); color:var(--text); display:flex; flex-direction:column; align-items:center; padding:1rem; margin:0; }
-button { border:none; border-radius:8px; color:white; padding:10px; cursor:pointer; background:var(--primary); font-weight:600; }
-button:active { transform:scale(0.96); }
-button.stop { background:var(--accent); }
-input { width:100%; padding:8px; margin-bottom:10px; border:1px solid #ddd; border-radius:4px; box-sizing: border-box; }
-.version-link { position:absolute; top:10px; right:10px; font-size:0.8rem; text-decoration:none; color:var(--primary); }
-#toast { position:fixed; bottom:20px; background:rgba(0,0,0,0.8); color:white; padding:10px 20px; border-radius:30px; opacity:0; pointer-events:none; transition:opacity 0.3s; }
-#toast.show { opacity:1; }
-.controls-card, .input-section { background:white; padding:20px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1); width:100%; max-width:600px; }
+:root {
+    --bg: #f4f4f9;
+    --text: #333;
+    --primary: #2a9d8f;
+    --secondary: #264653;
+    --accent: #e76f51;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    margin: 0;
+    min-height: 100vh;
+}
+
+button {
+    border: none;
+    border-radius: 8px;
+    color: white;
+    padding: 12px;
+    cursor: pointer;
+    background: var(--primary);
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+button:active { transform: scale(0.96); }
+button.stop { background: var(--accent); }
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.version-link {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 0.8rem;
+    text-decoration: none;
+    color: var(--primary);
+}
+
+#toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.85);
+    color: white;
+    padding: 10px 24px;
+    border-radius: 30px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    font-weight: 500;
+    z-index: 100;
+}
+#toast.show { opacity: 1; }
+
+.controls-card, .input-section {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    width: 100%;
+    max-width: 600px;
+}
