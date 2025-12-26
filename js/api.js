@@ -34,6 +34,33 @@ const ApiService = {
         if (!task.is_recurring) {
             await client.from('tasks').delete().eq('id', task.id);
         }
+    },
+
+    async deleteUser(id) {
+        const { error } = await client.from('users').delete().eq('id', id);
+        if (error) alert("Error: " + error.message);
+    },
+
+    async deleteTask(id) {
+        const { error } = await client.from('tasks').delete().eq('id', id);
+        if (error) alert("Error: " + error.message);
+    },
+
+    async updateUser(id, newName) {
+        const { error } = await client.from('users').update({ name: newName }).eq('id', id);
+        if (error) alert("Error: " + error.message);
+    },
+
+    async updateTask(id, newTitle, newPoints) {
+        const { error } = await client.from('tasks').update({ 
+            title: newTitle, 
+            points: parseInt(newPoints) 
+        }).eq('id', id);
+        if (error) alert("Error: " + error.message);
+    },
+    
+    async resetUserScore(id) {
+        await client.from('users').update({ score: 0 }).eq('id', id);
     }
 };
 

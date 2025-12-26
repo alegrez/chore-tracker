@@ -5,3 +5,46 @@
 .leaderboard-row { display:flex; justify-content:space-between; padding:10px; border-bottom:1px solid #eee; font-size:1.1rem; }
 .leaderboard-row:first-child { font-weight:bold; color:var(--accent); font-size:1.3rem; }
 .form-group { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px dashed #ccc; }
+
+.crud-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+}
+
+.crud-table th, .crud-table td {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+}
+
+.crud-table th {
+    background-color: #f8f8f8;
+    color: var(--secondary-color);
+}
+
+.actions-cell {
+    display: flex;
+    gap: 5px;
+}
+
+.btn-icon {
+    padding: 4px 8px;
+    font-size: 0.8rem;
+    background: #ccc;
+    color: #333;
+}
+
+.btn-edit { background-color: #457b9d; color: white; }
+.btn-delete { background-color: #e76f51; color: white; }
+.btn-reset { background-color: #e9c46a; color: #333; }
+
+.add-row {
+    display: flex;
+    gap: 10px;
+    background: #f1f1f1;
+    padding: 10px;
+    border-radius: 8px;
+}
+.add-row input { margin-bottom: 0; }

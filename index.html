@@ -28,16 +28,42 @@
         </div>
 
         <div id="tab-content-admin" class="tab-content">
-            <div class="form-group">
-                <h3>Nueva Tarea</h3>
-                <input type="text" id="newTaskTitle" placeholder="Título">
-                <input type="number" id="newTaskPoints" placeholder="Puntos">
-                <button id="btnCreateTask">Crear</button>
+            <div class="admin-panel">
+                <h3>👥 Gestión de Usuarios</h3>
+                <table class="crud-table" id="admin-users-table">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Pts</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+
+                <div class="add-row">
+                    <input type="text" id="newUserName" placeholder="Nuevo Usuario (ej. Juan)">
+                    <button id="btnCreateUser" class="small-btn">+</button>
+                </div>
             </div>
-            <div class="form-group">
-                <h3>Nuevo Usuario</h3>
-                <input type="text" id="newUserName" placeholder="Nombre">
-                <button id="btnCreateUser" style="background:var(--secondary-color)">Crear</button>
+            <hr style="border: 0; border-top: 1px dashed #ccc; margin: 2rem 0;">
+            <div class="admin-panel">
+                <h3>📋 Gestión de Tareas</h3>
+                <table class="crud-table" id="admin-tasks-table">
+                    <thead>
+                        <tr>
+                            <th>Tarea</th>
+                            <th>Pts</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <div class="add-row">
+                    <input type="text" id="newTaskTitle" placeholder="Nueva Tarea (ej. Lavar Auto)">
+                    <input type="number" id="newTaskPoints" placeholder="Pts" style="width: 80px;">
+                    <button id="btnCreateTask" class="small-btn">+</button>
+                </div>
             </div>
         </div>
     </div>
